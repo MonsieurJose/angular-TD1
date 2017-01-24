@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MonApp1">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon application</title>
+    <script src="angular.min.js"></script>
+    <script src="noteApp.js"></script>
+    <script src="noteController.js"></script>
+
+</head>
+<body>
+    <table>
+        <tr>Ex1 : Note Application</tr>
+        <div ng-controller="NoteController as Note">
+            <tr><p> Message : </p></tr>
+            <tr><textarea cols="100" rows="15" ng-model="Note.message" ></textarea></tr><br>
+            <tr><input type ="submit" id ="Enregistrer" value ="Enregistrer" name="Enregistrer">
+                <input type ="submit" id ="Effacer" value ="Effacer" name="Effacer"></tr>
+         </div>
+        <script>
+            angular.module("MonApp1",[]).controller("NoteController",function(){this.message="";});
+        </script>
+    </table>
+</body>
+</html>
