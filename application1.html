@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="MonApp1">
+<html lang="en" ng-app="NoteApp">
 <head>
     <meta charset="UTF-8">
     <title>Mon application</title>
@@ -11,15 +11,18 @@
 <body>
     <table>
         <tr>Ex1 : Note Application</tr>
-        <div ng-controller="NoteController as Note">
+        <div ng-controller="noteController as Note">
+
             <tr><p> Message : </p></tr>
-            <tr><textarea cols="100" rows="15" ng-model="Note.message" ></textarea></tr><br>
-            <tr><input type ="submit" id ="Enregistrer" value ="Enregistrer" name="Enregistrer">
-                <input type ="submit" id ="Effacer" value ="Effacer" name="Effacer"></tr>
+
+            <tr><textarea cols="100" rows="15" ng-model="Note.messageNote" ng-change="Note.count()" maxlength="100"></textarea></tr><br>
+
+            <tr><input type ="submit" id ="Enregistrer" value ="Enregistrer" name="Enregistrer" ng-click="">
+
+                <input type ="submit" id ="Effacer" value ="Effacer" name="Effacer" ng-click="Note.clear()"></tr>
+
+            <tr> <p> Nombre de caractères restant : {{Note.caractere}} </p></tr>
          </div>
-        <script>
-            angular.module("MonApp1",[]).controller("NoteController",function(){this.message="";});
-        </script>
     </table>
 </body>
 </html>
