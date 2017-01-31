@@ -6,23 +6,18 @@
     <script src="angular.min.js"></script>
     <script src="noteApp.js"></script>
     <script src="noteController.js"></script>
+    <script src="angular-cookies.min.js"></script>
 
 </head>
 <body>
-    <table>
-        <tr>Ex1 : Note Application</tr>
-        <div ng-controller="noteController as Note">
-
-            <tr><p> Message : </p></tr>
-
-            <tr><textarea cols="100" rows="15" ng-model="Note.messageNote" ng-change="Note.count()" maxlength="100"></textarea></tr><br>
-
-            <tr><input type ="submit" id ="Enregistrer" value ="Enregistrer" name="Enregistrer" ng-click="">
-
-                <input type ="submit" id ="Effacer" value ="Effacer" name="Effacer" ng-click="Note.clear()"></tr>
-
-            <tr> <p> Nombre de caractères restant : {{Note.caractere}} </p></tr>
-         </div>
-    </table>
+    <p>Ex1 : Note Application </p>
+    <div ng-controller="noteController as Note">
+        <p> Message : </p>
+        <textarea cols="100" rows="15" ng-model="Note.messageNote" ng-change="Note.count()" ng-model="Note.messageNote"
+                  maxlength="100"></textarea><br>
+        <input type ="submit" id ="Enregistrer" value ="Enregistrer" name="Enregistrer" ng-click="Note.save()">
+        <input type ="submit" id ="Effacer" value ="Effacer" name="Effacer" ng-click="Note.clear()">
+        <p> Nombre de caractères restant : {{Note.caractere}} </p>
+    </div>
 </body>
 </html>
