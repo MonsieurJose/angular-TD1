@@ -1,34 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>scope</title>
-    <style>
-        .ng-scope {
-            border-style: dotted solid;
-            border-width: thin;
-            border-color: #ff0009;
-            margin: 1em;
-            padding: 1em;
-        }
+<div ng-view="" class="toggle ng-scope"><form id="services" class="ng-pristine ng-valid ng-scope">
 
-        label {
-            color: #0400ff;
-        }
-    </style>
-    <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-    <script src="app.js"></script>
-</head>
-<body>
-
-<div data-ng-app="ScopeModule">
-    <label for="root">Scope racine</label> <input type="text" id="root"
-                                                  placeholder="Entrez du texte" ng-model="message">
-    <div data-ng-controller="ScopeController">
-        <label for="ctrl">Scope enfant</label> <input type="text" id="ctrl"
-                                                      placeholder="Entrez du texte" ng-model="message">
+    <h1>Services</h1>
+    <div class="alert alert-info">
+        <span>Choisissez les éléments à inclure</span>
+        <p>
+            <ng-pluralize count="count" when="{0:'Aucun service sélectionné',
+											1:'1 service sélectionné',
+											'other':'{} services sélectionnés'}">1 service sélectionné</ng-pluralize>
+        </p>
     </div>
-</div>
-</body>
-</html>
+    <ul>
+        <!-- ngRepeat: service in services --><li ng-repeat="service in services" ng-click="toggleActive(service)" ng-class="{active:service.active}" class="ng-binding ng-scope active">
+        Web Development <span class="ng-binding">$300.00</span>
+    </li><!-- end ngRepeat: service in services --><li ng-repeat="service in services" ng-click="toggleActive(service)" ng-class="{active:service.active}" class="ng-binding ng-scope">
+        Design <span class="ng-binding">$400.00</span>
+    </li><!-- end ngRepeat: service in services --><li ng-repeat="service in services" ng-click="toggleActive(service)" ng-class="{active:service.active}" class="ng-binding ng-scope">
+        Integration <span class="ng-binding">$250.00</span>
+    </li><!-- end ngRepeat: service in services --><li ng-repeat="service in services" ng-click="toggleActive(service)" ng-class="{active:service.active}" class="ng-binding ng-scope">
+        Formation <span class="ng-binding">$220.00</span>
+    </li><!-- end ngRepeat: service in services -->
+    </ul>
+
+    <div class="total">
+        <!-- Format en currency. -->
+        Total: <span class="ng-binding">$300.00</span>
+    </div>
+    <div>
+        <div class="input-group">
+      <span class="input-group-addon">
+        <input type="checkbox" aria-label="..." ng-model="ckPromo" ng-click="applyCode()" class="ng-pristine ng-untouched ng-valid">
+      </span>
+            <input type="text" class="form-control ng-pristine ng-untouched ng-valid" aria-label="..." ng-model="codePromo" placeholder="Code promo" ng-keyup="applyCode()">
+        </div>
+    </div>
+    <div class="total ng-hide" ng-show="ckPromo&amp;&amp;codePromo">
+        Remise :<!-- ngIf: IsNumeric(remise) --><!-- ngIf: !IsNumeric(remise) --><span ng-if="!IsNumeric(remise)" class="ng-binding ng-scope">Code promo invalide</span><!-- end ngIf: !IsNumeric(remise) --><br>
+        Total avec remise :<span class="ng-binding"></span>
+    </div>
+</form></div>
